@@ -1,33 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { useEffect, useState } from 'react'
+
+type Pokemon = {
+  url: string;
+  name: string;
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [pokemons, setPokemons] = useState<Pokemon[]>([])
+
+  useEffect(() => {
+    callPokeApi()
+  }, [])
+
+  const callPokeApi = async () => {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    const data: { results: Pokemon[] } = await response.json()
+    setPokemons(data.results)
+  }
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <h1>Pokemon</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+        {pokemons.map((item, i) => (
+          <a href={item.url} key={i}>{item.name}</a>
+        ))}
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

@@ -17,6 +17,12 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   plugins: ['react-refresh'],
+  ignorePatterns: [
+    ".eslintrc.cjs",
+    "postcss.config.js",
+    "tailwind.config.js",
+    "vite.config.ts",
+  ],
   rules: {
     'react-refresh/only-export-components': [
       'warn',

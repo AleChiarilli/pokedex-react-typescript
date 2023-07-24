@@ -7,12 +7,7 @@ type Pokemon = {
 }
 
 function App() {
-
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
-
-  useEffect(() => {
-    callPokeApi()
-  }, [])
 
   const callPokeApi = async () => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`, {
@@ -21,16 +16,18 @@ function App() {
         "Content-Type": "application/json",
       },
     })
-    const data: { results: Pokemon[] } = await response.json()
+    const data = await response.json() as { results: Pokemon[] };
     setPokemons(data.results)
   }
-
+  
+  useEffect(() => {
+    callPokeApi().catch(console.error)
+  }, [])
 
   return (
     <>
-      <h1>Pokemon</h1>
+      <h1 className="underline">Pokemon</h1>
       <div className="card">
-
         {pokemons.map((item, i) => (
           <a href={item.url} key={i}>{item.name}</a>
         ))}

@@ -19,8 +19,12 @@ git clone https://github.com/AleChiarilli/pokedex-react-typescript.git
 ```
 npm i
 ```
-
-##  Deployment guide
 ```
-npm start
+npm run dev
+```
+
+##  How to build the App
+
+```
+npm run build && npm run preview
 ```

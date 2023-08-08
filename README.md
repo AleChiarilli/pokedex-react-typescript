@@ -8,6 +8,8 @@ A lightweight web app to show and list Pokemons with their names, pictures, ID's
 ## Technologies used:
 - TypeScript
 - React
+- Tailwind
+- Vite
 - Public API: PokeAPI
 
 ## Instalation guide

@@ -28,3 +28,8 @@ npm run dev
 ```
 npm run build && npm run preview
 ```
+
+## Format checks
+```
+npm run lint && npm run prettier
+```

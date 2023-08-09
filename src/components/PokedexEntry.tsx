@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Pokemon } from '../App';
+import { convertDigits } from '../utils';
 
 type FlavorTextEntry = {
   flavor_text: string;
@@ -78,16 +79,22 @@ export const PokedexEntry: FC<Props> = ({ pokemon }) => {
 
   return (
     <>
-      <div className="border-2 border-red-600 border-dashed rounded">
-        {pokemon.id} {pokemon.name} {pokemon.url}
+      <div className="border-2 border-red-600 border-dashed rounded flex">
         {pokemonDetails && (
           <>
             <img src={pokemonDetails.sprites.front_default}></img>
-            <div>{pokemonDetails.types[0].type.name}</div>
-            {pokemonDetails.types[1] && (
-              <div>{pokemonDetails.types[1].type.name}</div>
+            {pokemon.id && (
+              <p>
+                {convertDigits(parseInt(pokemon.id), 3)} {pokemon.name}{' '}
+                <div>{pokemonDetails.types[0].type.name}</div>
+                {pokemonDetails.types[1] && (
+                  <div>{pokemonDetails.types[1].type.name}</div>
+                )}{' '}
+              </p>
             )}
-            <div>{pokemonFlavor?.flavor_text_entries[0].flavor_text}</div>
+            <div className="p-2">
+              {pokemonFlavor?.flavor_text_entries[0].flavor_text}
+            </div>
           </>
         )}
       </div>

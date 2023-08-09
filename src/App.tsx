@@ -1,20 +1,13 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { PokedexEntry } from './components/PokedexEntry';
+import { capitalizeFirstLetter, convertDigits } from './utils';
 
 export type Pokemon = {
   url: string;
   name: string;
   id?: string;
 };
-
-function capitalizeFirstLetter(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function convertDigits(num: number, width: number) {
-  return '#' + num.toString().padStart(width, '0');
-}
 
 function App() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);

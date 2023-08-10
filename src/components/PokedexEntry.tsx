@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Pokemon } from '../App';
-import { convertDigits } from '../utils';
+import { convertDigits, capitalizeFirstLetter } from '../utils';
 
 type FlavorTextEntry = {
   flavor_text: string;
@@ -79,23 +79,61 @@ export const PokedexEntry: FC<Props> = ({ pokemon }) => {
 
   return (
     <>
-      <div className="border-2 border-red-600 border-dashed rounded flex">
+      <div className="border-2 border-red-600 border-dashed rounded">
         {pokemonDetails && (
-          <>
-            <img src={pokemonDetails.sprites.front_default}></img>
+          <div className="flex flex-col p-2">
             {pokemon.id && (
-              <p>
-                {convertDigits(parseInt(pokemon.id), 3)} {pokemon.name}{' '}
-                <div>{pokemonDetails.types[0].type.name}</div>
-                {pokemonDetails.types[1] && (
-                  <div>{pokemonDetails.types[1].type.name}</div>
-                )}{' '}
-              </p>
+              <div className="flex flex-row">
+                <img
+                  src={pokemonDetails.sprites.front_default}
+                  className="w-[150px]"
+                ></img>
+                <p>{convertDigits(parseInt(pokemon.id), 3)}</p>
+                <p> {capitalizeFirstLetter(pokemon.name)}</p>
+                <div className="flex">
+                  <div className="pr-2">
+                    {pokemonDetails.types[0].type.name}
+                  </div>
+                  {pokemonDetails.types[1] && (
+                    <div>{pokemonDetails.types[1].type.name}</div>
+                  )}
+                </div>
+              </div>
             )}
-            <div className="p-2">
+            <div className="flex flex-col pt-5">
               {pokemonFlavor?.flavor_text_entries[0].flavor_text}
             </div>
-          </>
+            <h3 className="pt-5">Statistics</h3>
+            <p>
+              {pokemonDetails.stats[0].stat.name.toUpperCase()} :{' '}
+              {pokemonDetails.stats[0].base_stat}
+            </p>
+            <p>
+              {pokemonDetails.stats[1].stat.name.charAt(0).toUpperCase() +
+                pokemonDetails.stats[1].stat.name.slice(1)}{' '}
+              : {pokemonDetails.stats[1].base_stat}
+            </p>
+            <p>
+              {pokemonDetails.stats[2].stat.name.charAt(0).toUpperCase() +
+                pokemonDetails.stats[2].stat.name.slice(1)}{' '}
+              : {pokemonDetails.stats[2].base_stat}
+            </p>
+            <p>
+              {pokemonDetails.stats[3].stat.name.charAt(0).toUpperCase() +
+                pokemonDetails.stats[3].stat.name.slice(1)}{' '}
+              : {pokemonDetails.stats[3].base_stat}
+            </p>
+            <p>
+              {pokemonDetails.stats[4].stat.name.charAt(0).toUpperCase() +
+                pokemonDetails.stats[4].stat.name.slice(1)}{' '}
+              : {pokemonDetails.stats[4].base_stat}
+            </p>
+            <p>
+              {pokemonDetails.stats[5].stat.name.charAt(0).toUpperCase() +
+                pokemonDetails.stats[5].stat.name.slice(1)}{' '}
+              : {pokemonDetails.stats[5].base_stat}
+            </p>
+          </div>
         )}
       </div>
     </>

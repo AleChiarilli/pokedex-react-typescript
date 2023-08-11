@@ -1,6 +1,10 @@
 import { FC, useEffect, useState } from 'react';
 import { Pokemon } from '../App';
-import { convertDigits, capitalizeFirstLetter } from '../utils';
+import {
+  convertDigits,
+  capitalizeFirstLetter,
+  replaceWhitespace,
+} from '../utils';
 
 type FlavorTextEntry = {
   flavor_text: string;
@@ -79,7 +83,7 @@ export const PokedexEntry: FC<Props> = ({ pokemon }) => {
 
   return (
     <>
-      <div className="border-2 border-red-600 border-dashed rounded">
+      <div className="p-2 items-center sticky top-0 max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
         {pokemonDetails && (
           <div className="flex flex-col p-2">
             {pokemon.id && (
@@ -88,22 +92,25 @@ export const PokedexEntry: FC<Props> = ({ pokemon }) => {
                   src={pokemonDetails.sprites.front_default}
                   className="w-[150px]"
                 ></img>
-                <p>{convertDigits(parseInt(pokemon.id), 3)}</p>
-                <p> {capitalizeFirstLetter(pokemon.name)}</p>
-                <div className="flex">
-                  <div className="pr-2">
-                    {pokemonDetails.types[0].type.name}
+                <div className="flex-col">
+                  <p>{convertDigits(parseInt(pokemon.id), 3)}</p>
+                  <p> {capitalizeFirstLetter(pokemon.name)}</p>
+                  <div className="flex">
+                    <p className="pr-2">{pokemonDetails.types[0].type.name}</p>
+                    {pokemonDetails.types[1] && (
+                      <p>{pokemonDetails.types[1].type.name}</p>
+                    )}
                   </div>
-                  {pokemonDetails.types[1] && (
-                    <div>{pokemonDetails.types[1].type.name}</div>
-                  )}
                 </div>
+                <div className="flex justify-end">X</div>
               </div>
             )}
             <div className="flex flex-col pt-5">
-              {pokemonFlavor?.flavor_text_entries[0].flavor_text}
+              {replaceWhitespace(
+                pokemonFlavor?.flavor_text_entries[0].flavor_text,
+              )}
             </div>
-            <h3 className="pt-5">Statistics</h3>
+            <h3 className="pt-5 pb-1">Statistics</h3>
             <p>
               {pokemonDetails.stats[0].stat.name.toUpperCase()} :{' '}
               {pokemonDetails.stats[0].base_stat}

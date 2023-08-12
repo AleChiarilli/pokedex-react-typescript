@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react';
-import { Pokemon } from '../App';
+import { Pokemon } from '../PokedexEntries';
 import {
   convertDigits,
   capitalizeFirstLetter,
   replaceWhitespace,
-} from '../utils';
+} from '../../../utils';
 
 type FlavorTextEntry = {
   flavor_text: string;

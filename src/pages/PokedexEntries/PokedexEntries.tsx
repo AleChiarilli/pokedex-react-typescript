@@ -1,16 +1,11 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { PokedexEntry } from './components/PokedexEntry';
-import { NavBar } from './components/NavBar';
-import { capitalizeFirstLetter, convertDigits } from './utils';
+import { NavBar } from '../../components/NavBar';
+import { capitalizeFirstLetter, convertDigits } from '../../utils';
+import { Pokemon } from './types';
 
-export type Pokemon = {
-  url: string;
-  name: string;
-  id?: string;
-};
-
-function App() {
+export function PokedexEntries() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon>({
     url: '',
@@ -68,5 +63,3 @@ function App() {
     </>
   );
 }
-
-export default App;

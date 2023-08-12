@@ -1,4 +1,4 @@
-import './App.css';
+import './PokedexEntries.css';
 import { useEffect, useState } from 'react';
 import { PokedexEntry } from './components/PokedexEntry';
 import { NavBar } from '../../components/NavBar';

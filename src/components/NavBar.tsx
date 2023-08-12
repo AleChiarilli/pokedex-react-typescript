@@ -10,13 +10,22 @@ export const NavBar = () => {
               alt="AlexDex Logo"
             />
           </li>
-          <li className="flex-1">AlexDex</li>
+          <li>
+            <a>
+              <span className="text-red-500 font-medium">Alex</span>
+              <span>Dex</span>
+            </a>
+          </li>
+          <li>Home</li>
+          <li>About</li>
+          <li className="flex-1">Repository</li>
           <li>
             <input
               type="text"
               name="search"
               id="search"
-              placeholder="Charizard"
+              placeholder="🔍 Charizard"
+              className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none focus:border-blue-500"
             />
           </li>
         </ul>

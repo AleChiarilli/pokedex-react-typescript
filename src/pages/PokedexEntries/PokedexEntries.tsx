@@ -1,16 +1,17 @@
-import './PokedexEntries.css';
-import { useEffect, useState } from 'react';
-import { PokedexEntry } from './components/PokedexEntry';
+import { useEffect } from 'react';
 import { NavBar } from '../../components/NavBar';
 import { capitalizeFirstLetter, convertDigits } from '../../utils';
 import { Pokemon } from './types';
+import { useDispatch, useSelector } from 'react-redux';
+import { SAVE_POKEDEX_ENTRIES, SELECT_POKEMON } from './reducer/slice';
+import { PokedexEntry } from './components/PokedexEntry';
+import { getPokedexEntries } from './reducer/selectors';
+
+import './PokedexEntries.css';
 
 export function PokedexEntries() {
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  const [selectedPokemon, setSelectedPokemon] = useState<Pokemon>({
-    url: '',
-    name: '',
-  });
+  const pokemons = useSelector(getPokedexEntries);
+  const dispatch = useDispatch();
 
   const callPokeApi = async () => {
     const response = await fetch(
@@ -23,7 +24,7 @@ export function PokedexEntries() {
       },
     );
     const data = (await response.json()) as { results: Pokemon[] };
-    setPokemons(data.results);
+    dispatch(SAVE_POKEDEX_ENTRIES(data.results));
   };
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export function PokedexEntries() {
   }, []);
 
   const handleSelectedPokemon = (pokemon: Pokemon) => {
-    setSelectedPokemon(pokemon); // Cambiar el estado de false a true
+    dispatch(SELECT_POKEMON(pokemon));
   };
 
   return (
@@ -54,11 +55,7 @@ export function PokedexEntries() {
             </li>
           ))}
         </ul>
-        {selectedPokemon.id && (
-          <section className="pl-3">
-            <PokedexEntry pokemon={selectedPokemon} />
-          </section>
-        )}
+        <PokedexEntry />
       </div>
     </>
   );

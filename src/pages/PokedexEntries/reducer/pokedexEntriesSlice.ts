@@ -28,7 +28,7 @@ const initialState: PokedexEntriesState = {
 };
 
 export const fetchPokedexEntries = createAsyncThunk<Pokemon[]>(
-  'pokedexEntries/getPokedexEntries',
+  'pokedexEntries/fetchPokedexEntries',
   async () => {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon?limit=151`,
@@ -41,6 +41,27 @@ export const fetchPokedexEntries = createAsyncThunk<Pokemon[]>(
     );
     const data = (await response.json()) as { results: Pokemon[] };
     return data.results;
+  },
+);
+
+export const fetchSelectedPokemonDetails = createAsyncThunk(
+  'pokedexEntries/fetchSelectedPokemonDetails',
+  async (pokemon: Pokemon) => {
+    const pokemonDetails = (await fetch(pokemon.url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(res => res.json())) as PokemonDetail;
+
+    const pokemonFlavor = (await fetch(pokemonDetails.species.url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(res => res.json())) as PokedexFlavorTextEntry;
+
+    return { selectedEntry: pokemon, pokemonDetails, pokemonFlavor };
   },
 );
 
@@ -65,9 +86,15 @@ const pokedexEntriesSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(fetchPokedexEntries.fulfilled, (state, action) => {
-      state.entries = action.payload;
-    });
+    builder
+      .addCase(fetchPokedexEntries.fulfilled, (state, action) => {
+        state.entries = action.payload;
+      })
+      .addCase(fetchSelectedPokemonDetails.fulfilled, (state, action) => {
+        state.pokemonDetails = action.payload.pokemonDetails;
+        state.pokemonFlavor = action.payload.pokemonFlavor;
+        state.selectedEntry = action.payload.selectedEntry;
+      });
   },
 });
 

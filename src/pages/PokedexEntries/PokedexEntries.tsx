@@ -3,7 +3,10 @@ import { NavBar } from '../../components/NavBar';
 import { capitalizeFirstLetter, convertDigits } from '../../utils';
 import { Pokemon } from './types';
 import { useDispatch, useSelector } from 'react-redux';
-import { SELECT_POKEMON, fetchPokedexEntries } from './reducer/slice';
+import {
+  fetchPokedexEntries,
+  fetchSelectedPokemonDetails,
+} from './reducer/pokedexEntriesSlice';
 import { PokedexEntry } from './components/PokedexEntry';
 import { getPokedexEntries } from './reducer/selectors';
 
@@ -19,7 +22,7 @@ export function PokedexEntries() {
   }, [dispatch]);
 
   const handleSelectedPokemon = (pokemon: Pokemon) => {
-    dispatch(SELECT_POKEMON(pokemon));
+    dispatch(fetchSelectedPokemonDetails(pokemon));
   };
 
   return (

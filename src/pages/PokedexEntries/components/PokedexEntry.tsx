@@ -1,59 +1,20 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import {
   convertDigits,
   capitalizeFirstLetter,
   replaceWhitespace,
 } from '../../../utils';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   getPokedexFlavor,
   getPokemonDetails,
   selectedPokedexEntry,
 } from '../reducer/selectors';
-import { PokedexFlavorTextEntry, PokemonDetail } from '../types';
-import { SAVE_POKEMON_DETAILS, SAVE_POKEMON_FLAVOR } from '../reducer/slice';
 
 export const PokedexEntry: FC = () => {
-  const dispatch = useDispatch();
   const pokemon = useSelector(selectedPokedexEntry);
   const pokemonDetails = useSelector(getPokemonDetails);
   const pokemonFlavor = useSelector(getPokedexFlavor);
-
-  const setPokemonDetails = (detail: PokemonDetail) => {
-    dispatch(SAVE_POKEMON_DETAILS(detail));
-  };
-
-  const setPokemonFlavor = (flavor: PokedexFlavorTextEntry) => {
-    dispatch(SAVE_POKEMON_FLAVOR(flavor));
-  };
-
-  useEffect(() => {
-    if (pokemon.url) {
-      fetch(pokemon.url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(res => res.json())
-        .then(setPokemonDetails)
-        .catch(console.error);
-    }
-  }, [pokemon]);
-
-  useEffect(() => {
-    if (pokemonDetails?.species?.url) {
-      fetch(pokemonDetails.species.url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(res => res.json())
-        .then(setPokemonFlavor)
-        .catch(console.error);
-    }
-  }, [pokemonDetails]);
 
   if (!pokemon.id) return <></>;
 

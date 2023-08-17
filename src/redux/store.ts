@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import pokedexEntriesSlice from '../pages/PokedexEntries/reducer/slice';
+import pokedexEntriesSlice from '../pages/PokedexEntries/reducer/pokedexEntriesSlice';
 import { listenerMiddleware } from './listenerMiddleware';
 
 export const rootReducer = combineReducers({

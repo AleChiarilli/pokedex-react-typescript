@@ -3,33 +3,20 @@ import { NavBar } from '../../components/NavBar';
 import { capitalizeFirstLetter, convertDigits } from '../../utils';
 import { Pokemon } from './types';
 import { useDispatch, useSelector } from 'react-redux';
-import { SAVE_POKEDEX_ENTRIES, SELECT_POKEMON } from './reducer/slice';
+import { SELECT_POKEMON, fetchPokedexEntries } from './reducer/slice';
 import { PokedexEntry } from './components/PokedexEntry';
 import { getPokedexEntries } from './reducer/selectors';
 
 import './PokedexEntries.css';
+import { AppDispatch } from '../../redux/types';
 
 export function PokedexEntries() {
+  const dispatch = useDispatch<AppDispatch>();
   const pokemons = useSelector(getPokedexEntries);
-  const dispatch = useDispatch();
-
-  const callPokeApi = async () => {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=151`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-    const data = (await response.json()) as { results: Pokemon[] };
-    dispatch(SAVE_POKEDEX_ENTRIES(data.results));
-  };
 
   useEffect(() => {
-    callPokeApi().catch(console.error);
-  }, []);
+    dispatch(fetchPokedexEntries());
+  }, [dispatch]);
 
   const handleSelectedPokemon = (pokemon: Pokemon) => {
     dispatch(SELECT_POKEMON(pokemon));

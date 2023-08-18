@@ -25,6 +25,7 @@ const initialState: PokedexEntriesState = {
   pokemonFlavor: {
     flavor_text_entries: [],
   },
+  searchText: 'charizard',
 };
 
 export const fetchPokedexEntries = createAsyncThunk<Pokemon[]>(
@@ -72,17 +73,24 @@ const pokedexEntriesSlice = createSlice({
     SELECT_POKEMON: (state, action: PayloadAction<Pokemon>) => {
       state.selectedEntry = action.payload;
     },
+
     SAVE_POKEDEX_ENTRIES: (state, action: PayloadAction<Pokemon[]>) => {
       state.entries = action.payload;
     },
+
     SAVE_POKEMON_DETAILS: (state, action: PayloadAction<PokemonDetail>) => {
       state.pokemonDetails = action.payload;
     },
+
     SAVE_POKEMON_FLAVOR: (
       state,
       action: PayloadAction<PokedexFlavorTextEntry>,
     ) => {
       state.pokemonFlavor = action.payload;
+    },
+
+    SEARCH_POKEMON: (state, action: PayloadAction<string>) => {
+      state.searchText = action.payload;
     },
   },
   extraReducers(builder) {
@@ -103,6 +111,7 @@ export const {
   SAVE_POKEDEX_ENTRIES,
   SAVE_POKEMON_DETAILS,
   SAVE_POKEMON_FLAVOR,
+  SEARCH_POKEMON,
 } = pokedexEntriesSlice.actions;
 
 export default pokedexEntriesSlice.reducer;

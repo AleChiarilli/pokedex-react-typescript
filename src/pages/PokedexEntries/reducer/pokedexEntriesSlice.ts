@@ -25,7 +25,7 @@ const initialState: PokedexEntriesState = {
   pokemonFlavor: {
     flavor_text_entries: [],
   },
-  searchText: 'charizard',
+  searchText: '',
 };
 
 export const fetchPokedexEntries = createAsyncThunk<Pokemon[]>(

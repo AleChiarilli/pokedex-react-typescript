@@ -1,25 +1,18 @@
-import { useEffect } from 'react';
+import { FC } from 'react';
 import { NavBar } from '../../components/NavBar';
 import { capitalizeFirstLetter, convertDigits } from '../../utils';
 import { Pokemon } from './types';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchPokedexEntries,
-  fetchSelectedPokemonDetails,
-} from './reducer/pokedexEntriesSlice';
-import { PokedexEntry } from './components/PokedexEntry';
-import { getPokedexEntries } from './reducer/selectors';
+import { fetchSelectedPokemonDetails } from './reducer/pokedexEntriesSlice';
 import { searchPokemon } from './reducer/selectors';
 import { AppDispatch } from '../../redux/types';
+import { Link, Outlet, useLoaderData } from 'react-router-dom';
 
-export function PokedexEntries() {
+export const PokedexEntries: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const pokemons = useSelector(getPokedexEntries);
-  const searchByText = useSelector(searchPokemon);
+  const { results: pokemons } = useLoaderData() as { results: Pokemon[] };
 
-  useEffect(() => {
-    dispatch(fetchPokedexEntries());
-  }, [dispatch]);
+  const searchByText = useSelector(searchPokemon);
 
   const handleSelectedPokemon = (pokemon: Pokemon) => {
     dispatch(fetchSelectedPokemonDetails(pokemon));
@@ -42,15 +35,17 @@ export function PokedexEntries() {
                 }
                 className="hover:cursor-pointer p-5 flex flex-col items-center hover:bg-slate-50 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
               >
-                <p className="mb-2 text-m font-bold tracking-tight text-gray-900">
-                  {capitalizeFirstLetter(pokemon.name)}
-                </p>
-                <p>{convertDigits(index + 1, 3)}</p>
+                <Link to={pokemon.name}>
+                  <p className="mb-2 text-m font-bold tracking-tight text-gray-900">
+                    {capitalizeFirstLetter(pokemon.name)}
+                  </p>
+                  <p>{convertDigits(index + 1, 3)}</p>
+                </Link>
               </li>
             ))}
         </ul>
-        <PokedexEntry />
+        <Outlet />
       </div>
     </>
   );
-}
+};

@@ -15,3 +15,7 @@ export function getPokemonDetails(state: RootState) {
 export function getPokedexFlavor(state: RootState) {
   return state.pokedexEntries.pokemonFlavor;
 }
+
+export function searchPokemon(state: RootState) {
+  return state.pokedexEntries.searchText;
+}

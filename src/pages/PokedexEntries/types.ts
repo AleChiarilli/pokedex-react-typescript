@@ -44,4 +44,5 @@ export type PokedexEntriesState = {
   selectedEntry: Pokemon;
   pokemonDetails: PokemonDetail;
   pokemonFlavor: PokedexFlavorTextEntry;
+  searchText: string;
 };

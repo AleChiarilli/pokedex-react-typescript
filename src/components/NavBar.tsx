@@ -18,19 +18,19 @@ export const NavBar = () => {
         <ul className="w-full flex flex-row align-middle items-center">
           <li>
             <img
-              src="https://w7.pngwing.com/pngs/363/696/png-transparent-pokemon-go-computer-icons-psyduck-pokemon-go.png"
+              src="https://img.icons8.com/officel/80/pokedex.png"
               className="h-10 mr-3"
               alt="AlexDex Logo"
             />
           </li>
-          <li>
+          <li className="mr-10 font-semibold text-2xl">
             <a>
-              <span className="text-red-500 font-medium">Alex</span>
+              <span className="text-red-500">Alex</span>
               <span>Dex</span>
             </a>
           </li>
-          <li>Home</li>
-          <li>About</li>
+          <li className="mr-5">Home</li>
+          <li className="mr-5">About</li>
           <li className="flex-1">Repository</li>
           <li>
             <input

@@ -10,7 +10,7 @@ import {
   getPokemonDetails,
   selectedPokedexEntry,
 } from '../reducer/selectors';
-import { BarType } from './PokeBarType';
+import { BarType, PokemonType } from './PokeBarType';
 import { StatProgressBar } from './StatProgressBar';
 
 export const PokedexEntry: FC = () => {
@@ -20,12 +20,16 @@ export const PokedexEntry: FC = () => {
 
   if (!pokemon.id || !pokemonDetails.stats.length) return <></>;
 
+  console.log(pokemonDetails);
+
   return (
     <>
       <section className="pl-3">
         <div className="items-center sticky top-0 max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
           <div>
-            <BarType />
+            <BarType
+              pokemonType={pokemonDetails.types[0].type.name as PokemonType}
+            />
           </div>
           {pokemonDetails && (
             <div className="flex flex-col p-2">

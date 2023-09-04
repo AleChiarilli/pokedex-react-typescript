@@ -21,8 +21,8 @@ export const PokedexEntries: FC = () => {
   return (
     <>
       <NavBar />
-      <div className="flex flex-row">
-        <ul className="grid gap-4 grid-cols-3 grid-rows-3">
+      <div className="flex flex-row justify-between">
+        <ul className="flex flex-col gap-3">
           {pokemons
             .filter(pokemon =>
               pokemon.name.toLowerCase().includes(searchByText.toLowerCase()),
@@ -33,13 +33,13 @@ export const PokedexEntries: FC = () => {
                 onClick={() =>
                   handleSelectedPokemon({ ...pokemon, id: `${index + 1}` })
                 }
-                className="hover:cursor-pointer p-5 flex flex-col items-center hover:bg-slate-50 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                className="hover:cursor-pointer p-2 flex flex-row w-56 items-center hover:bg-slate-50 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
               >
-                <Link to={pokemon.name}>
-                  <p className="mb-2 text-m font-bold tracking-tight text-gray-900">
+                <Link to={pokemon.name} className="flex flex-row w-full">
+                  <p>{convertDigits(index + 1, 3)}</p>
+                  <p className="ml-2 mb-2 text-m font-bold tracking-tight text-gray-900">
                     {capitalizeFirstLetter(pokemon.name)}
                   </p>
-                  <p>{convertDigits(index + 1, 3)}</p>
                 </Link>
               </li>
             ))}

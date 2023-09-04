@@ -29,7 +29,9 @@ export const NavBar = () => {
               <span>Dex</span>
             </a>
           </li>
-          <li className="mr-5 font-semibold">Home</li>
+          <a href="https://alexdex.vercel.app/">
+            <li className="mr-5 font-semibold">Home</li>
+          </a>
           <a
             className="mr-5 font-semibold"
             href="https://github.com/AleChiarilli/pokedex-react-typescript/blob/main/README.md"

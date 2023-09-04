@@ -39,7 +39,10 @@ export const PokedexEntry: FC = () => {
                   ></img>
                   <div className="flex-col">
                     <p>{convertDigits(parseInt(pokemon.id), 3)}</p>
-                    <p> {capitalizeFirstLetter(pokemon.name)}</p>
+                    <p className="font-semibold">
+                      {' '}
+                      {capitalizeFirstLetter(pokemon.name)}
+                    </p>
                     <div className="flex">
                       <p className="pr-2">
                         {pokemonDetails.types[0]?.type.name}

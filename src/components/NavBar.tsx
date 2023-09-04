@@ -50,7 +50,7 @@ export const NavBar = () => {
               value={searchPoke}
               id="search"
               placeholder="🔍 Charizard"
-              className="border-2 border-gray-300 bg-white h-10 w-full rounded-lg text-sm focus:outline-none focus:border-blue-500"
+              className="pl-2 w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none focus:border-blue-500"
             />
           </li>
         </ul>

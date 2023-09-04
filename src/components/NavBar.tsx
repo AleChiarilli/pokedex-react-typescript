@@ -14,25 +14,35 @@ export const NavBar = () => {
 
   return (
     <>
-      <nav className="py-5 w-full">
-        <ul className="w-full flex flex-row align-middle items-center">
+      <nav className="pt-5 pb-3">
+        <ul className="flex flex-wrap flex-row align-middle items-center">
           <li>
             <img
               src="https://img.icons8.com/officel/80/pokedex.png"
-              className="h-10 mr-3"
+              className="h-10 mr-3 font-semibold"
               alt="AlexDex Logo"
             />
           </li>
-          <li className="mr-10 font-semibold text-2xl">
+          <li className="mr-10 font-semibold text-2xl ">
             <a>
               <span className="text-red-500">Alex</span>
               <span>Dex</span>
             </a>
           </li>
-          <li className="mr-5">Home</li>
-          <li className="mr-5">About</li>
-          <li className="flex-1">Repository</li>
-          <li>
+          <li className="mr-5 font-semibold">Home</li>
+          <a
+            className="mr-5 font-semibold"
+            href="https://github.com/AleChiarilli/pokedex-react-typescript/blob/main/README.md"
+          >
+            <li>About</li>
+          </a>
+          <a
+            className="flex-1 font-semibold"
+            href="https://github.com/AleChiarilli/pokedex-react-typescript/tree/main"
+          >
+            <li>Repository</li>
+          </a>
+          <li className="pt-3 w-full">
             <input
               onChange={e => handleSearchPokemon(e.currentTarget.value)}
               type="text"
@@ -40,7 +50,7 @@ export const NavBar = () => {
               value={searchPoke}
               id="search"
               placeholder="🔍 Charizard"
-              className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none focus:border-blue-500"
+              className="pl-2 w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none focus:border-blue-500"
             />
           </li>
         </ul>

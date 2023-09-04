@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 const colorsByType = {
   grass: 'bg-green-600',
   poison: 'bg-purple-600',

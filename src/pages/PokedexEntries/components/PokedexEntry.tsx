@@ -20,8 +20,6 @@ export const PokedexEntry: FC = () => {
 
   if (!pokemon.id || !pokemonDetails.stats.length) return <></>;
 
-  console.log(pokemonDetails);
-
   return (
     <>
       <section className="pl-3">
@@ -63,39 +61,61 @@ export const PokedexEntry: FC = () => {
                 {pokemonDetails.stats[0]?.stat.name.toUpperCase()}:{' '}
                 {pokemonDetails.stats[0]?.base_stat}
               </p>
-              <StatProgressBar value={pokemonDetails.stats[0]?.base_stat} />
+              <StatProgressBar
+                pokemonType={pokemonDetails.types[0].type.name as PokemonType}
+                value={pokemonDetails.stats[0]?.base_stat}
+              />
               <p>
                 {pokemonDetails.stats[1]?.stat.name.charAt(0).toUpperCase() +
                   pokemonDetails.stats[1]?.stat.name.slice(1)}{' '}
                 : {pokemonDetails.stats[1]?.base_stat}
               </p>
-              <StatProgressBar value={pokemonDetails.stats[1]?.base_stat} />
+              <StatProgressBar
+                pokemonType={pokemonDetails.types[0].type.name as PokemonType}
+                value={pokemonDetails.stats[1]?.base_stat}
+              />
               <p>
                 {pokemonDetails.stats[2]?.stat.name.charAt(0).toUpperCase() +
                   pokemonDetails.stats[2]?.stat.name.slice(1)}{' '}
                 : {pokemonDetails.stats[2]?.base_stat}
               </p>
-              <StatProgressBar value={pokemonDetails.stats[2]?.base_stat} />
+              <StatProgressBar
+                pokemonType={pokemonDetails.types[0].type.name as PokemonType}
+                value={pokemonDetails.stats[2]?.base_stat}
+              />
               <p>
                 {pokemonDetails.stats[3]?.stat.name.charAt(0).toUpperCase() +
                   pokemonDetails.stats[3]?.stat.name.slice(1)}{' '}
                 : {pokemonDetails.stats[3]?.base_stat}
               </p>
-              <StatProgressBar value={pokemonDetails.stats[3]?.base_stat} />
+              <StatProgressBar
+                pokemonType={pokemonDetails.types[0].type.name as PokemonType}
+                value={pokemonDetails.stats[3]?.base_stat}
+              />
               <p>
                 {pokemonDetails.stats[4]?.stat.name.charAt(0).toUpperCase() +
                   pokemonDetails.stats[4]?.stat.name.slice(1)}{' '}
                 : {pokemonDetails.stats[4]?.base_stat}
               </p>
-              <StatProgressBar value={pokemonDetails.stats[4]?.base_stat} />
+              <StatProgressBar
+                pokemonType={pokemonDetails.types[0].type.name as PokemonType}
+                value={pokemonDetails.stats[4]?.base_stat}
+              />
               <p>
                 {pokemonDetails.stats[5]?.stat.name.charAt(0).toUpperCase() +
                   pokemonDetails.stats[5]?.stat.name.slice(1)}{' '}
                 : {pokemonDetails.stats[5]?.base_stat}
               </p>
-              <StatProgressBar value={pokemonDetails.stats[5]?.base_stat} />
+              <StatProgressBar
+                pokemonType={pokemonDetails.types[0].type.name as PokemonType}
+                value={pokemonDetails.stats[5]?.base_stat}
+              />
             </div>
           )}
+          <div>
+            <h2>Weaknesses</h2>
+            <p></p>
+          </div>
         </div>
       </section>
     </>

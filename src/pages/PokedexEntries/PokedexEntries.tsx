@@ -21,26 +21,29 @@ export const PokedexEntries: FC = () => {
     [searchByText, results],
   );
 
+  const getPokemonId = (pokemonName: string) =>
+    results.findIndex(pokemon => pokemon.name === pokemonName);
+
   const handleSelectedPokemon = (pokemon: Pokemon) => {
     dispatch(fetchSelectedPokemonDetails(pokemon));
   };
 
   const getPokemonDexNumber = (pokemonName: string) =>
-    convertDigits(
-      results.findIndex(pokemon => pokemon.name === pokemonName) + 1,
-      3,
-    );
+    convertDigits(getPokemonId(pokemonName) + 1, 3);
 
   return (
     <>
       <NavBar />
       <div className="flex flex-row justify-between">
         <ul className="flex flex-col gap-3">
-          {pokemons.map((pokemon, index) => (
+          {pokemons.map(pokemon => (
             <li
               key={pokemon.name}
               onClick={() =>
-                handleSelectedPokemon({ ...pokemon, id: `${index + 1}` })
+                handleSelectedPokemon({
+                  ...pokemon,
+                  id: `${getPokemonId(pokemon.name) + 1}`,
+                })
               }
               className="hover:cursor-pointer p-2 flex flex-row w-56 items-center hover:bg-slate-50 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >

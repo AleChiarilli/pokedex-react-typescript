@@ -115,10 +115,6 @@ export const PokedexEntry: FC = () => {
               />
             </div>
           )}
-          <div>
-            <h2>Weaknesses</h2>
-            <p></p>
-          </div>
         </div>
       </section>
     </>

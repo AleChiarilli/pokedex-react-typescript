@@ -5,26 +5,17 @@ import {
   Pokemon,
   PokemonDetail,
 } from '../types';
+import {
+  defaultDetails,
+  defaultEntry,
+  defaultFlavorText,
+} from '../../../utils/constants';
 
 const initialState: PokedexEntriesState = {
   entries: [],
-  selectedEntry: {
-    url: '',
-    name: '',
-  },
-  pokemonDetails: {
-    sprites: {
-      front_default: '',
-    },
-    types: [],
-    stats: [],
-    species: {
-      url: '',
-    },
-  },
-  pokemonFlavor: {
-    flavor_text_entries: [],
-  },
+  selectedEntry: defaultEntry,
+  pokemonDetails: defaultDetails,
+  pokemonFlavor: defaultFlavorText,
   searchText: '',
 };
 

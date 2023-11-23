@@ -23,7 +23,7 @@ export const PokedexEntry: FC = () => {
   return (
     <>
       <section className="pl-3">
-        <div className="items-center sticky top-0 max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
+        <div className="items-center sticky top-0 max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl">
           <div>
             <BarType
               pokemonType={pokemonDetails.types[0].type.name as PokemonType}

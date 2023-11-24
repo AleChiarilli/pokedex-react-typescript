@@ -23,6 +23,25 @@ export const colorsByType = {
   dragon: 'bg-purple-500',
 };
 
+export const colorsTextByType = {
+  grass: 'text-green-600',
+  poison: 'text-purple-600',
+  fire: 'text-red-600',
+  flying: 'text-orange-300',
+  water: 'text-sky-400',
+  bug: 'text-lime-700',
+  normal: 'text-neutral-400',
+  fairy: 'text-pink-300',
+  ground: 'text-yellow-900',
+  fighting: 'text-orange-600',
+  psychic: 'text-pink-800',
+  rock: 'text-amber-900',
+  steel: 'text-teal-700',
+  electric: 'text-yellow-300',
+  ghost: 'text-purple-800',
+  dragon: 'text-purple-500',
+};
+
 
 export const defaultDetails = {
   abilities: [

@@ -45,11 +45,11 @@ export const PokedexEntries: FC = () => {
                   id: `${getPokemonId(pokemon.name) + 1}`,
                 })
               }
-              className="hover:cursor-pointer p-2 flex flex-row w-56 items-center hover:bg-slate-90 bg-white border border-gray-200 rounded-lg shadow opacity-90 hover:opacity-100"
+              className="hover:cursor-pointer p-2 flex flex-row md:w-56  items-center hover:bg-slate-90 bg-white border border-gray-200 rounded-lg shadow opacity-90 hover:opacity-100"
             >
               <Link to={pokemon.name} className="flex flex-row w-full">
                 <p>{getPokemonDexNumber(pokemon.name)}</p>
-                <p className="ml-2 mb-2 text-m font-bold tracking-tight ">
+                <p className="md:ml-2 ml-1 md:mb-2 text-m font-medium md:font-bold tracking-tight ">
                   {capitalizeFirstLetter(pokemon.name)}
                 </p>
               </Link>

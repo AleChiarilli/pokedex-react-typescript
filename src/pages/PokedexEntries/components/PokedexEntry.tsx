@@ -12,7 +12,7 @@ import {
 } from '../reducer/selectors';
 import { BarType, PokemonType } from './PokeBarType';
 import { StatProgressBar } from './StatProgressBar';
-import { colorsByType, colorsTextByType } from '../../../utils/constants';
+import { colorsTextByType } from '../../../utils/constants';
 
 export const PokedexEntry: FC = () => {
   const pokemon = useSelector(selectedPokedexEntry);

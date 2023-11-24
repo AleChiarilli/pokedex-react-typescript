@@ -12,6 +12,7 @@ import {
 } from '../reducer/selectors';
 import { BarType, PokemonType } from './PokeBarType';
 import { StatProgressBar } from './StatProgressBar';
+import { colorsTextByType } from '../../../utils/constants';
 
 export const PokedexEntry: FC = () => {
   const pokemon = useSelector(selectedPokedexEntry);
@@ -44,11 +45,11 @@ export const PokedexEntry: FC = () => {
                       {capitalizeFirstLetter(pokemon.name)}
                     </p>
                     <div className="flex">
-                      <p className="pr-2">
+                      <p className={`pr-2 ${colorsTextByType[pokemonDetails.types[0]?.type.name]}`}>
                         {pokemonDetails.types[0]?.type.name}
                       </p>
                       {pokemonDetails.types[1] && (
-                        <p>{pokemonDetails.types[1].type.name}</p>
+                        <p className={`pr-2 ${colorsTextByType[pokemonDetails.types[1]?.type.name]}`}>{pokemonDetails.types[1].type.name}</p>
                       )}
                     </div>
                   </div>

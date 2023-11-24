@@ -1,3 +1,5 @@
+import { colorsTextByType } from "../../utils/constants";
+
 type FlavorTextEntry = {
   flavor_text: string;
 };
@@ -20,7 +22,7 @@ type PokemonStat = {
 type PokemonType = {
   slot: number;
   type: {
-    name: string;
+    name: keyof typeof colorsTextByType;
   };
 };
 

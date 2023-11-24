@@ -32,7 +32,7 @@ export const PokedexEntry: FC = () => {
           {pokemonDetails && (
             <div className="flex flex-col p-2">
               {pokemon.id && (
-                <div className="flex flex-row">
+                <div className="flex flex-col md:flex-row">
                   <img
                     src={pokemonDetails.sprites.front_default}
                     className="w-[150px]"
@@ -40,7 +40,7 @@ export const PokedexEntry: FC = () => {
                   <div className="flex-col">
                     <p>{convertDigits(parseInt(pokemon.id), 3)}</p>
                     <p className="font-semibold">
-                      {' '}
+                       
                       {capitalizeFirstLetter(pokemon.name)}
                     </p>
                     <div className="flex">
@@ -61,8 +61,8 @@ export const PokedexEntry: FC = () => {
               </div>
               <h3 className="pt-5 pb-1">Statistics</h3>
               <p>
-                {pokemonDetails.stats[0]?.stat.name.toUpperCase()}:{' '}
-                {pokemonDetails.stats[0]?.base_stat}
+                {pokemonDetails.stats[0]?.stat.name.toUpperCase()}
+                : {pokemonDetails.stats[0]?.base_stat}
               </p>
               <StatProgressBar
                 pokemonType={pokemonDetails.types[0].type.name as PokemonType}
@@ -70,7 +70,7 @@ export const PokedexEntry: FC = () => {
               />
               <p>
                 {pokemonDetails.stats[1]?.stat.name.charAt(0).toUpperCase() +
-                  pokemonDetails.stats[1]?.stat.name.slice(1)}{' '}
+                  pokemonDetails.stats[1]?.stat.name.slice(1)} 
                 : {pokemonDetails.stats[1]?.base_stat}
               </p>
               <StatProgressBar
@@ -79,7 +79,7 @@ export const PokedexEntry: FC = () => {
               />
               <p>
                 {pokemonDetails.stats[2]?.stat.name.charAt(0).toUpperCase() +
-                  pokemonDetails.stats[2]?.stat.name.slice(1)}{' '}
+                  pokemonDetails.stats[2]?.stat.name.slice(1)} 
                 : {pokemonDetails.stats[2]?.base_stat}
               </p>
               <StatProgressBar
@@ -88,7 +88,7 @@ export const PokedexEntry: FC = () => {
               />
               <p>
                 {pokemonDetails.stats[3]?.stat.name.charAt(0).toUpperCase() +
-                  pokemonDetails.stats[3]?.stat.name.slice(1)}{' '}
+                  pokemonDetails.stats[3]?.stat.name.slice(1)} 
                 : {pokemonDetails.stats[3]?.base_stat}
               </p>
               <StatProgressBar
@@ -97,7 +97,7 @@ export const PokedexEntry: FC = () => {
               />
               <p>
                 {pokemonDetails.stats[4]?.stat.name.charAt(0).toUpperCase() +
-                  pokemonDetails.stats[4]?.stat.name.slice(1)}{' '}
+                  pokemonDetails.stats[4]?.stat.name.slice(1)} 
                 : {pokemonDetails.stats[4]?.base_stat}
               </p>
               <StatProgressBar
@@ -106,7 +106,7 @@ export const PokedexEntry: FC = () => {
               />
               <p>
                 {pokemonDetails.stats[5]?.stat.name.charAt(0).toUpperCase() +
-                  pokemonDetails.stats[5]?.stat.name.slice(1)}{' '}
+                  pokemonDetails.stats[5]?.stat.name.slice(1)} 
                 : {pokemonDetails.stats[5]?.base_stat}
               </p>
               <StatProgressBar

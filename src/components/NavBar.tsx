@@ -15,36 +15,37 @@ export const NavBar = () => {
   return (
     <>
       <nav className="pt-5 pb-3">
-        <ul className="flex flex-wrap flex-row align-middle items-center">
+        <ul className="flex flex-col items-center md:flex-row md:justify-between ">
           <li>
             <img
               src="https://img.icons8.com/officel/80/pokedex.png"
-              className="h-10 mr-3 font-semibold"
+              className="h-10 md:mr-3 font-semibold"
               alt="AlexDex Logo"
             />
           </li>
-          <li className="mr-10 font-semibold text-2xl ">
+          <li className="md:mr-10 font-semibold text-2xl ">
             <a>
               <span className="text-red-500">Alex</span>
               <span>Dex</span>
             </a>
           </li>
           <a href="https://alexdex.vercel.app/">
-            <li className="mr-5 font-semibold">Home</li>
+            <li className="md:mr-5 font-semibold text-white">Home</li>
           </a>
           <a
-            className="mr-5 font-semibold"
+            className="md:mr-5 font-semibold text-white"
             href="https://github.com/AleChiarilli/pokedex-react-typescript/blob/main/README.md"
           >
             <li>About</li>
           </a>
           <a
-            className="flex-1 font-semibold"
+            className="flex-1 font-semibold text-white"
             href="https://github.com/AleChiarilli/pokedex-react-typescript/tree/main"
           >
             <li>Repository</li>
           </a>
-          <li className="pt-3 w-full">
+                  </ul>
+          <div className="pt-3 w-full">
             <input
               onChange={e => handleSearchPokemon(e.currentTarget.value)}
               type="text"
@@ -54,8 +55,8 @@ export const NavBar = () => {
               placeholder="🔍 Charizard"
               className="pl-2 w-full border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none focus:border-blue-500"
             />
-          </li>
-        </ul>
+          </div>
+
       </nav>
     </>
   );

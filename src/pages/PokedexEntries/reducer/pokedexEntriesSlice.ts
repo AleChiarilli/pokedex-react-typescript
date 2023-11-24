@@ -14,7 +14,7 @@ import {
 const initialState: PokedexEntriesState = {
   entries: [],
   selectedEntry: defaultEntry,
-  pokemonDetails: defaultDetails,
+  pokemonDetails: defaultDetails as PokemonDetail,
   pokemonFlavor: defaultFlavorText,
   searchText: '',
 };
